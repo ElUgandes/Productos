@@ -1,8 +1,8 @@
 const CACHE_NAME = 'proyectos-pwa-v2';
 const PRECACHE_URLS = [
   './',
-  './productos.html?homescreen=v2',
-  './productos.html',
+  './index.html?homescreen=v2',
+  './index.html',
   './manifest.webmanifest',
   './icons/icon-192.png',
   './icons/icon-512.png',
@@ -32,7 +32,7 @@ self.addEventListener('fetch', (event) => {
         } catch (e) {}
         return resp;
       }).catch(() => {
-        if (event.request.destination === 'document') return caches.match('./productos.html');
+        if (event.request.destination === 'document') return caches.match('./index.html');
         return new Response('', { status: 503, statusText: 'Offline' });
       })
     )
