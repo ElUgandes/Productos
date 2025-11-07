@@ -1,4 +1,4 @@
-const CACHE_NAME = 'proyectos-pwa-v2';
+const CACHE_NAME = 'productos-pwa-v2';
 const PRECACHE_URLS = [
   './',
   './index.html?homescreen=v2',
