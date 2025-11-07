@@ -1,8 +1,8 @@
 {
   "id": "/?app-id=proyectos-v2",
-  "name": "Proyectos PWA (Local)",
-  "short_name": "Proyectos",
-  "description": "PWA lista para instalar en localhost con botón de instalación.",
+  "name": "Proyectos PWA",
+  "short_name": "Productos",
+  "description": "PWA lista para instalar en localhost",
   "start_url": "./index.html?homescreen=v2",
   "scope": "./",
   "display": "standalone",
