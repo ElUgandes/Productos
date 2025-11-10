@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Registro de Productos</title>
+  <title>Registro de Proyectos (con LocalStorage + Imágenes)</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css" rel="stylesheet" />
   <style>
@@ -30,9 +30,7 @@
 </head>
 <body class="bg-light">
   <div class="container py-5">
-    <div class="text-center mb-4">
-      <h1 class="display-4 text-primary mb-3">Gestión de Productos</h1>
-        <!--Navbar-->
+           <!--barra de navegación-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Home Essence</a>
@@ -48,6 +46,10 @@
         </div>
     </div>
 </nav>
+<br>
+<br>
+    <div class="text-center mb-4">
+      <h1 class="display-4 text-primary mb-3">Gestión de Productos</h1>
       
       <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#proyectoModal">
         Registrar Nuevo Producto
@@ -78,14 +80,16 @@
               </div>
 
               <div class="col-md-6">
-                <label for="clienteProyecto" class="form-label">Proveedor (Seleccione uno) *</label>
-                <input type="text" class="form-control" id="clienteProyecto" placeholder="Nombre del cliente" required />
+                <label for="clienteProyecto" class="form-label">Proveedor *</label>
+                <input type="text" class="form-control" id="clienteProyecto" placeholder="Nombre del proveedor" required />
               </div>
 
               <div class="col-md-6">
                 <label for="fechaInicio" class="form-label">Fecha de llegada *</label>
                 <input type="date" class="form-control" id="fechaInicio" required />
               </div>
+
+              
 
               <div class="col-md-6">
                 <label for="presupuesto" class="form-label">Precio al público *</label>
@@ -96,35 +100,24 @@
               </div>
 
               <div class="col-md-6">
-                <label for="estadoProyecto" class="form-label">Existencias *</label>
+                <label for="estadoProyecto" class="form-label">Estado *</label>
                 <select class="form-select" id="estadoProyecto" required>
-                  <option value="">Seleccionar nivel de existencias</option>
-                  <option value="100%">100%</option>
-                  <option value="75%">75%</option>
-                  <option value="50%">50%</option>
-                  <option value="25%">25%</option>
+                  <option value="">Seleccionar estado</option>
+                  <option value="planificacion">Planificación</option>
+                  <option value="en-progreso">En Progreso</option>
+                  <option value="en-pausa">En Pausa</option>
+                  <option value="completado">Completado</option>
                 </select>
               </div>
 
               <div class="col-12">
-                <label for="responsable" class="form-label">Responsable que recibió *</label>
-                <input type="text" class="form-control" id="responsable" placeholder="Nombre del responsable que recibió el cargamento" required />
-              </div>
-
-                 <div class="col-md-6">
-                <label for="estadoProyecto" class="form-label">Departamento *</label>
-                <select class="form-select" id="Departamento" required>
-                  <option value="">Seleccionar departamento al que pertenece el producto </option>
-                  <option value="Baños">Baños</option>
-                  <option value="Herramientas">Alfombras</option>
-                  <option value="Alfombras">Pisos</option>
-                  <option value="Pisos">Puertas</option>
-                </select>
+                <label for="responsable" class="form-label">Responsable en turno cuando llegó el producto*</label>
+                <input type="text" class="form-control" id="responsable" placeholder="Supervisor de llegada" required />
               </div>
 
               <div class="col-12">
-                <label for="descripcion" class="form-label">Descripción</label>
-                <textarea class="form-control" id="descripcion" rows="3" placeholder="Descripción del produccto..."></textarea>
+                <label for="descripcion" class="form-label">Descripción *</label>
+                <textarea class="form-control" id="descripcion" rows="3" placeholder="Descrpción del producto..." required></textarea>
               </div>
 
               <!-- MODIFICACION: SUBIR una o varias imágenes -->
@@ -236,7 +229,7 @@
                 <strong>Responsable:</strong> ${proyecto.responsable}<br />
                 <strong>Presupuesto:</strong> $${currencyMX(proyecto.presupuesto)}<br />
                 <strong>Inicio:</strong> ${new Date(proyecto.fechaInicio).toLocaleDateString('es-MX')}<br />
-                <strong>Fin:</strong> ${new Date(proyecto.fechaFin).toLocaleDateString('es-MX')}
+              
               </p>
               ${proyecto.descripcion ? `<p class="card-text text-muted"><small>${proyecto.descripcion}</small></p>` : ''}
               ${proyecto.imagenes && proyecto.imagenes.length
@@ -300,7 +293,7 @@
         nombre: document.getElementById('nombreProyecto').value.trim(),
         cliente: document.getElementById('clienteProyecto').value.trim(),
         fechaInicio: document.getElementById('fechaInicio').value,
-        fechaFin: document.getElementById('fechaFin').value,
+
         presupuesto: parseFloat(document.getElementById('presupuesto').value),
         estado: document.getElementById('estadoProyecto').value,
         responsable: document.getElementById('responsable').value.trim(),
@@ -378,3 +371,5 @@ window.addEventListener('appinstalled', () => {
 
 </body>
 </html>
+
+
